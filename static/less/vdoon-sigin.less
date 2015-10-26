@@ -2,6 +2,8 @@
 .signup-panel {
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: rgba(250, 250, 250, .8);
+    box-shadow: 2px 2px 5px 0 rgba(100, 100, 100, .5);
     padding: 15px;
     margin-top: 30px;
     i {
@@ -10,15 +12,19 @@
         color: #999;
     }
     form {
-        input, span, .phonecode{
+        input,
+        span,
+        .phonecode {
             height: 50px;
+            font-family: "微软雅黑", Helvetica;
+            font-size: 1rem;
         }
         .postfix {
             line-height: 50px;
-            margin:0 0 1rem 0;
+            margin: 0 0 1rem 0;
         }
         .saveuser {
-//            height: 50px;
+            //            height: 50px;
             line-height: 40px;
         }
     }
@@ -28,7 +34,7 @@
         margin-left: 0;
     }
     p {
-        font-size: 13px;
+        font-size: 1rem;
         font-weight: 200;
     }
     .submit {
@@ -37,8 +43,9 @@
     }
 }
 body {
-    font-family: MicrosoftYaHei, "Heiti SC", Helvetica ;
-//    margin: 2rem; // for demo only
+    background: url('/static/img/1359090799417.jpg') no-repeat left top;
+    background-size: 100%;
+    font-family: "微软雅黑", YaHei, "Heiti SC", Helvetica;
 }
 .switch-on {
     position: absolute;
