@@ -22,7 +22,7 @@ ID  | id | ini(11) |
 省份 | province | char(30) | 
 城市 | city | char(30) | 
 学校 | school | varchar(100) | 
-入学年份 | | | 
+入学年份 | entrance_year | int(11) | 
 学历/学位 | degree | char(20) | 
 学号 | learn_number | varchar(50) | 
 专业 | major | varchar(100) | 
