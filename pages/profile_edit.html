@@ -32,18 +32,18 @@
                     <!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>-->
                     <form>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">手机</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="手机号">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">省市</span>
                             </div>
-                            <div class="small-5  columns">
+                            <div class="small-4  columns">
                                 <select>
                                     <option value="All">All</option>
                                     <option value="Mediterranean">北京</option>
@@ -63,66 +63,92 @@
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">学校</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">学号</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">学历</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">专业</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">年份</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="入学年份">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">姓名</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="请填写真实姓名">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
+                                <span class="prefix">性别</span>
+                            </div>
+                            <div class="small-9  columns">
+
+                                <ul class="button-group round toggle" data-toggle="buttons-radio">
+                                    <li>
+                                        <input type="radio" id="r1" name="sex" data-toggle="button" value="1">
+                                        <!--                                        <input type="radio" id="r1" name="sex" data-toggle="button" value="1" <?php echo ($info[ 'sex']==1 ) ? 'checked=”checked”' : ''; ?>>-->
+                                        <label class="button secondary" for="r1">男</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="r3" name="sex" data-toggle="button" value="2" checked=”checked”>
+                                        <!--                                        <input type="radio" id="r3" name="sex" data-toggle="button" value="2" <?php echo ($info[ 'sex']==2 ) ? 'checked=”checked”' : ''; ?>>-->
+                                        <label class="button secondary" for="r3">女</label>
+                                    </li>
+                                </ul>
+                                <!--
+                                <label>
+    <input type="radio" name="sex" value="1" <?php echo ($info[ 'sex']==1 ) ? 'checked=”checked”' : ''; ?>>男
+    <input type="radio" name="sex" value="2" <?php echo ($info[ 'sex']==2 ) ? 'checked=”checked”' : ''; ?>>女
+</label>
+-->
+                            </div>
+                        </div>
+                        <div class="row collapse">
+                            <div class="small-3  columns">
                                 <span class="prefix">身份证</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2  columns">
+                            <div class="small-3  columns">
                                 <span class="prefix">公司</span>
                             </div>
-                            <div class="small-10  columns">
+                            <div class="small-9  columns">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
@@ -133,7 +159,7 @@
                         </div>
 
                         <div class="row collapse hide">
-                            <div class="small-2 columns">
+                            <div class="small-3 columns">
                                 <span class="prefix"><i class="fa fa-ellipsis-h"></i></span>
                             </div>
                             <div class="small-5  columns">
@@ -144,15 +170,16 @@
                             </div>
                         </div>
                         <div class="row collapse">
-                            <div class="small-2 columns ">
+                            <div class="small-3 columns ">
                                 <span class="prefix"><i class="fa fa-lock"></i></span>
                             </div>
-                            <div class="small-10 columns ">
+                            <div class="small-9 columns ">
                                 <input type="password" placeholder="输入您的密码">
                             </div>
                         </div>
+                        <button id="submit" type="submit" class="button expand">提交修改</button>
                     </form>
-                    <a href="#" class="button expand">提交修改</a>
+
                 </div>
             </div>
         </div>
@@ -165,6 +192,23 @@
     <script src="http://cdn.bootcss.com/foundation/5.5.3/js/foundation.min.js"></script>
     <script>
         $(document).foundation();
+        $('#submit').on('click', function() {
+            $.ajax({
+                url: '',
+                data: {
+                    user: $('#phone').val(),
+                    phonecode: $('#phonecode').val(),
+                    code: $('#code').val(),
+                    pass: $('#password').val()
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(v) {
+
+                },
+                error: function() {}
+            });
+        });
 
     </script>
 </body>

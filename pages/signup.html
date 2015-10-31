@@ -32,18 +32,31 @@
                             <input type="text" placeholder="手机号">
                         </div>
                     </div>
-
                     <div class="row collapse">
                         <div class="small-2 columns">
                             <span class="prefix"><i class="fa fa-ellipsis-h"></i></span>
                         </div>
                         <div class="small-5  columns">
-                            <input type="text" placeholder="输入手机验证码">
+                            <input id="phonecode" type="text" placeholder="输入验证码">
                         </div>
                         <div class="small-5 columns">
-                            <a href="#" class="button phonecode postfix">发送短信验证码</a>
+                            <a href="#" class="button secondary phonecode postfix">
+                                <img id="verificationImg" alt="验证码" src="/verifications/show?5FZEYS2REK16" onclick="changeVerificationImg('verificationImg'); return false;" title="(看不清，换一张)">
+                            </a>
                         </div>
                     </div>
+                    <div class="row collapse">
+                        <div class="small-2 columns">
+                            <span class="prefix"><i class="fa fa-ellipsis-h"></i></span>
+                        </div>
+                        <div class="small-5  columns">
+                            <input id="phonecode" type="text" placeholder="输入手机验证码">
+                        </div>
+                        <div class="small-5 columns">
+                            <button id="sendPhoneCode" type="button" class="button phonecode postfix">发送短信验证码</button>
+                        </div>
+                    </div>
+
                     <div class="row collapse">
                         <div class="small-2 columns ">
                             <span class="prefix"><i class="fa fa-lock"></i></span>
@@ -52,13 +65,14 @@
                             <input type="text" placeholder="输入您的密码">
                         </div>
                     </div>
-                </form>
-                <div class="row collapse">
-                    <div class="small-12 columns">
-                        <a href="#" class="button large radius submit postfix">绑定 </a>
-                        <p>已经有账号了?点这里 <a href="./signin.html">登录 &raquo</a></p>
+
+                    <div class="row collapse">
+                        <div class="small-12 columns">
+                            <button id="submit" href="#" class="button large radius submit postfix">绑定 </button>
+                            <p>已经有账号了?点这里 <a href="./signin.html">登录 &raquo</a></p>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -67,6 +81,99 @@
     <script src="http://cdn.bootcss.com/foundation/5.5.3/js/foundation.min.js"></script>
     <script>
         $(document).foundation();
+        // 生成随机字符串
+        function generateMixed(n) {
+            var chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            var res = "";
+            for (var i = 0; i < n; i++) {
+                var id = Math.ceil(Math.random() * 35);
+                res += chars[id];
+            }
+            return res;
+        }
+        // 更新验证码图片
+        function changeVerificationImg(imgId) {
+            var newVerificationImg = '/verifications/show?' + generateMixed(12);
+            $('img[id="' + imgId + '"]').attr('src', newVerificationImg);
+        }
+        $('#sendPhoneCode').on('click', function() {
+            var phone = $('#phone'),
+                val = phone.val(),
+                that = $(this),
+                code = $('#code');
+            if (val.length == 0) {
+                alert('手机号不能为空');
+                return;
+            } else if (val.length != 11) {
+                alert('手机号位数不对');
+                return;
+            }
+            if (that.hasClass('sending')) {
+                alert('请勿重复提交');
+                return;
+            }
+            if (code.val().length != 4) {
+                alert('请输入正确的验证码');
+                return;
+            }
+            $.ajax({
+                url: '',
+                data: {},
+                type: 'post',
+                dataType: 'json',
+                beforeSend: function() {
+                    that.addClass('sending');
+                },
+                success: function(v) {
+                    //                    that.removeClass('sending');
+                    if (v.sign == 0) {
+                        alert(v.msg);
+                        return;
+                    }
+                    that.addClass('secondary');
+                    var txt = 60;
+                    that.text(txt);
+                    var timeInterval = setInterval(function() {
+                        txt--;
+                        that.text(txt);
+                        if (txt <= 0) {
+                            that.removeClass('secondary');
+                            that.removeClass('sending');
+                            that.text('发送短信验证码');
+                            clearInterval(timeInterval);
+                        }
+                    }, 1000);
+                },
+                error: function() {
+                    that.removeClass('secondary');
+                    that.removeClass('sending');
+                    that.text('发送短信验证码');
+                    clearInterval(timeInterval);
+                }
+            });
+        });
+
+        $('#submit').on('click', function() {
+            $.ajax({
+                url: '',
+                data: {
+                    user: $('#phone').val(),
+                    phonecode: $('#phonecode').val(),
+                    code: $('#code').val(),
+                    pass: $('#password').val()
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(v) {
+                    if (v.sign == 0) {
+                        alert(v.msg);
+                        return;
+                    }
+                    window.location.href = v.msg;
+                },
+                error: function() {}
+            });
+        });
 
     </script>
 </body>

@@ -60,3 +60,6 @@ body {
   font-weight: bold;
   font-size: 9px;
 }
+#verificationImg {
+  width: 100%;
+}
